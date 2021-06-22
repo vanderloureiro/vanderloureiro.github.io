@@ -2,4 +2,36 @@ body {
     background-color: #1D1E20;
     color: #F3F3F3;
     font-family: 'Roboto Mono', monospace;
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+
+ul, ol, li {
+    list-style: none;
+}
+
+.container {
+    margin: 0 10%;
+}
+
+h1 {
+    font-weight: 700;
+    font-size: 32px;
+}
+
+header {
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+    vertical-align: middle;
+}
+
+.content {
+    margin: 0 10%;
+}
+
+footer {
+    padding: 1% 10%;
+    background-color: #000;
 }
