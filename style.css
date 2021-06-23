@@ -37,6 +37,24 @@ header {
     margin: 0 10%;
 }
 
+.home-description {
+    margin: 8% 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.text-description {
+    margin-right: 7%;
+    font-size: 22px;
+}
+
+.image-description img {
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+}
+
 footer {
     display: flex;
     justify-content: space-between;
