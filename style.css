@@ -17,14 +17,25 @@ ul, ol, li {
 
 h1 {
     font-weight: 700;
-    font-size: 32px;
+    font-size: 28px;
+    margin: 0;
+}
+
+i {
+    size: 22px;
+    margin-left: 5px;
 }
 
 header {
     height: 80px;
     display: flex;
     justify-content: space-between;
-    vertical-align: middle;
+    align-items: center;
+}
+
+header a {
+    color: #F3F3F3;
+    text-decoration: none;
 }
 
 .content {
