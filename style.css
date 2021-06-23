@@ -21,11 +21,6 @@ h1 {
     margin: 0;
 }
 
-i {
-    size: 22px;
-    margin-left: 5px;
-}
-
 header {
     height: 80px;
     display: flex;
@@ -33,7 +28,7 @@ header {
     align-items: center;
 }
 
-header a {
+.social-media a {
     color: #F3F3F3;
     text-decoration: none;
 }
@@ -43,6 +38,23 @@ header a {
 }
 
 footer {
-    padding: 1% 10%;
+    display: flex;
+    justify-content: space-between;
+    padding: 2% 10% 3% 10%;
     background-color: #000;
+    font-size: 18px;
+}
+
+footer p {
+    margin: 0;
+}
+
+.social-media-footer {
+    padding-top: 3%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.social-media-footer i {
+    margin-left: 10px;
 }
