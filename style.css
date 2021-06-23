@@ -12,7 +12,7 @@ ul, ol, li {
 }
 
 .container {
-    margin: 0 10%;
+    margin: 0 8em;
 }
 
 h1 {
@@ -34,11 +34,11 @@ header {
 }
 
 .content {
-    margin: 0 10%;
+    margin: 0 8rem;
 }
 
 .home-description {
-    margin: 8% 0;
+    margin: 7rem 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -52,7 +52,36 @@ header {
 .image-description img {
     width: 220px;
     height: 220px;
-    border-radius: 50%;
+}
+
+.more-publications {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 4rem;
+}
+
+.more-publications a {
+    color: #F3F3F3;
+    text-decoration: none;
+}
+
+.more-publications a:hover {
+    text-decoration: underline;
+}
+
+.publication-card {
+    height: 180px;
+    margin-bottom: 2rem;
+    background-color: #000;
+    border-radius: 15px;
+    display: flex;
+}
+
+.publication-card img {
+    object-fit: cover;
+    height: 100%;
+    width: 250px;
+    border-radius: 15px;
 }
 
 footer {
@@ -68,7 +97,7 @@ footer p {
 }
 
 .social-media-footer {
-    padding-top: 3%;
+    padding-top: 1rem;
     display: flex;
     justify-content: flex-end;
 }
