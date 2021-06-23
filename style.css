@@ -11,6 +11,11 @@ ul, ol, li {
     list-style: none;
 }
 
+a {
+    color: #F3F3F3;
+    text-decoration: none;
+}
+
 .container {
     margin: 0 8em;
 }
@@ -26,11 +31,6 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-}
-
-.social-media a {
-    color: #F3F3F3;
-    text-decoration: none;
 }
 
 .content {
@@ -60,11 +60,6 @@ header {
     margin-bottom: 4rem;
 }
 
-.more-publications a {
-    color: #F3F3F3;
-    text-decoration: none;
-}
-
 .more-publications a:hover {
     text-decoration: underline;
 }
@@ -82,6 +77,32 @@ header {
     height: 100%;
     width: 250px;
     border-radius: 15px;
+}
+
+.publication-card-text {
+    padding: 1rem;
+    position: relative;
+}
+
+.publication-card-text h4 {
+    font-size: 20px;
+    font-weight: 700;
+    margin: 0;
+}
+
+.publication-card-text p {
+    opacity: 0.8;
+    margin: 0.5rem 0;
+    font-size: 16px;
+}
+
+.publication-card-text .date {
+    position: absolute;
+    bottom: 0;
+}
+
+.publication-card-text a:hover {
+    text-decoration: underline;
 }
 
 footer {
