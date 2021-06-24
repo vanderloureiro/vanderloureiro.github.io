@@ -21,8 +21,8 @@
     }
     
     .publication-card {
-        display: inline-block;
-        height: 320px;
+        display: inline-table;
+        min-height: 320px;
     }
 
     .publication-card img {
@@ -31,10 +31,15 @@
         width: 100%;
         border-radius: 15px;
     }
+
+    .publication-card-text .date {
+        position: inherit;
+    }
     
     footer {
         display: block;
         text-align: center;
+        font-size: 1rem;
     }
 
     .social-media-footer {
@@ -50,13 +55,12 @@
         padding-top: 1rem;
     }
 
-    .content {
-        margin: 0;
+    h1 {
+        font-size: 1.6rem;
     }
 
-    .publication-card {
-        display: inline-block;
-        height: 420px;
+    .content {
+        margin: 0;
     }
 
     .publication-card img {
@@ -68,6 +72,17 @@
 
     .social-media {
         margin-top: 1rem;
+    }
+
+    footer {
+        padding: 5% 5% 7% 5%;
+    }
+
+}
+
+@media(max-width: 400px) {
+    h1 {
+        font-size: 1.4rem;
     }
 
 }
