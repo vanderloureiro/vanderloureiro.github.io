@@ -15,9 +15,13 @@
     }
 
     .home-description {
-        margin: 5rem 0;
+        margin: 4rem 0;
         text-align: center;
         flex-direction: column-reverse;
+    }
+
+    .text-description {
+        font-size: 1rem;
     }
     
     .publication-card {
