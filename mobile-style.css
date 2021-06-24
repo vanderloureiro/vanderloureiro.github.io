@@ -14,21 +14,25 @@
         margin: 0 2rem;
     }
 
-    .content {
-        margin: 0 1rem;
-    }
-
     .home-description {
         margin: 7rem 0;
-        display:inline-block;
+        display: inline-block;
     }
     
     .publication-card {
         display: inline-block;
+        height: 320px;
+    }
+
+    .publication-card img {
+        object-fit: cover;
+        height: 50%;
+        width: 100%;
+        border-radius: 15px;
     }
     
     footer {
-        display: inline-block;
+        display: block;
         text-align: center;
     }
 
@@ -41,11 +45,16 @@
 
 @media(max-width: 600px) {
     header {
-        display: inline-block;
+        display: block;
         padding-top: 1rem;
+    }
+
+    .content {
+        margin: 0;
     }
 
     .social-media {
         margin-top: 1rem;
     }
+
 }
