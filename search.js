@@ -69,6 +69,7 @@ function shortenText(text,startingPoint ,maxLength) {
 }
  
 function customizeDate(date) {
-    console.log(date);
-    return date;
+    date = shortenText(date,0,10);
+    const formatedDate = date.slice(8, 10) +'/'+ date.slice(5, 7) +'/'+ date.slice(0, 4);
+    return formatedDate;
 }
