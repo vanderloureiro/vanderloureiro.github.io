@@ -1,0 +1,51 @@
+@media(max-width: 1200px) {
+    .container {
+        margin: 0 4rem;
+    }
+
+    .content {
+        margin: 0 4rem;
+    }
+}
+
+@media(max-width: 900px) {
+
+    .container {
+        margin: 0 2rem;
+    }
+
+    .content {
+        margin: 0 1rem;
+    }
+
+    .home-description {
+        margin: 7rem 0;
+        display:inline-block;
+    }
+    
+    .publication-card {
+        display: inline-block;
+    }
+    
+    footer {
+        display: inline-block;
+        text-align: center;
+    }
+
+    .social-media-footer {
+        padding-top: 1rem;
+        display: flex;
+        justify-content: center;
+    }
+}
+
+@media(max-width: 600px) {
+    header {
+        display: inline-block;
+        padding-top: 1rem;
+    }
+
+    .social-media {
+        margin-top: 1rem;
+    }
+}
