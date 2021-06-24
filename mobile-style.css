@@ -15,8 +15,9 @@
     }
 
     .home-description {
-        margin: 7rem 0;
-        display: inline-block;
+        margin: 5rem 0;
+        text-align: center;
+        flex-direction: column-reverse;
     }
     
     .publication-card {
@@ -51,6 +52,18 @@
 
     .content {
         margin: 0;
+    }
+
+    .publication-card {
+        display: inline-block;
+        height: 420px;
+    }
+
+    .publication-card img {
+        object-fit: cover;
+        height: 40%;
+        width: 100%;
+        border-radius: 15px;
     }
 
     .social-media {
