@@ -32,13 +32,14 @@ function feelFeed(data) {
 
     const publications = orderPublicationsListByDate(data.items);
 
+    console.log(data);
     publications.forEach(item => {
         var content = '<div class="publication-card" id="publication-card">'
         if (item.thumbnail) {
             content += '<img src="'+item.thumbnail+'" alt="">'
         }
         content += '<div class="publication-card-text"><a href="'+item.link+'" target="_blank"><h4>'+item.title+'</h4></a>'
-        content += '<p>Eliminando retornos de erro gigantes em requisições Spring com ExceptionHandler e ControllerAdvice</p>'
+        content += '<p>'+shortenText(toText(item.content),0, 130)+ '...</p>'
         content += '<p class="date">'+customizeDate(item.pubDate)+'</p>'
         content += '</div></div>'
         
@@ -46,6 +47,27 @@ function feelFeed(data) {
     })
 }
 
+function toText(node) {
+    node = removeImageCredit(node);
+    let tag = document.createElement('div')
+    tag.innerHTML = node
+    node = tag.innerText
+    return node
+}
+
+function removeImageCredit(content) {
+    const UNSPLASH_SIZE = 8;
+    var indexSearchUnplash = content.indexOf('Unsplash');
+    if (indexSearchUnplash != -1) {
+        return content.slice(indexSearchUnplash + UNSPLASH_SIZE, -1);
+    }
+    return content;
+}
+
+function shortenText(text,startingPoint ,maxLength) {
+    return text.length > maxLength? text.slice(startingPoint, maxLength) : text
+}
+ 
 function customizeDate(date) {
     console.log(date);
     return date;
