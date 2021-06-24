@@ -18,6 +18,11 @@ function getPublications() {
 }
 
 function orderPublicationsListByDate(publications) {
+
+    publications.sort(function(pub1, pub2) {
+        if (pub1.pubDate > pub2.pubDate) return 1;
+        return -1;
+    });
     return publications;
 }
 
