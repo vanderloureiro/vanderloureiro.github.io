@@ -12,9 +12,7 @@ function getPublications() {
                 });
             }
         })
-        .catch(function(err) { 
-            console.error(err);
-        });
+        .catch(function(err) {});
 }
 
 function orderPublicationsListByDate(publications) {
@@ -32,7 +30,6 @@ function feelFeed(data) {
 
     const publications = orderPublicationsListByDate(data.items);
 
-    console.log(data);
     publications.forEach(item => {
         var content = '<div class="publication-card" id="publication-card">'
         if (item.thumbnail) {
