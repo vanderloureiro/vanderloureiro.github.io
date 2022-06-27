@@ -1,18 +1,10 @@
 @media(max-width: 1200px) {
-    .container {
-        margin: 0 4rem;
-    }
-
     .content {
         margin: 0 4rem;
     }
 }
 
 @media(max-width: 900px) {
-
-    .container {
-        margin: 0 2rem;
-    }
 
     .home-description {
         margin: 4rem 0;
