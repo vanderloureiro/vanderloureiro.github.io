@@ -1,6 +1,12 @@
+@font-face {
+    font-family: 'Charter Regular';
+    src: url(./assets/charter/ttf/Charter\ Regular.ttf);
+  }
+  
+
 body {
     color: #1D1E20;
-    font-family: 'Roboto Mono', monospace;
+    font-family: 'Charter Regular', serif;
     width: 100%;
     margin: 0;
     padding: 0;
@@ -21,6 +27,7 @@ a:hover {
 }
 
 h1 {
+    font-family: Roboto;
     font-weight: 700;
     font-size: 1.8rem;
     margin: 0;
@@ -85,6 +92,7 @@ header {
 }
 
 .publication-card-text h4 {
+    font-family: 'Roboto';
     font-size: 20px;
     font-weight: 700;
     margin: 0;
