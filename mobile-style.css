@@ -13,12 +13,12 @@
     }
 
     .text-description {
-        font-size: 1rem;
+        margin-top: 40px;
+        font-size: 1.3rem;
     }
     
     .publication-card {
         display: inline-table;
-        min-height: 320px;
     }
 
     .publication-card img {
