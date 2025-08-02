@@ -39,7 +39,6 @@ function feelFeed(data) {
             }
             content += '<div class="publication-card-text"><a href="' + item.link + '" target="_blank"><h4>' + item.title + '</h4></a>'
             content += '<p>' + shortenText(toText(item.content), 0, 130) + '...</p>'
-            content += '<p class="date">' + customizeDate(item.pubDate) + '</p>'
             content += '</div></div>'
 
             publicationsFeed.insertAdjacentHTML('afterend', content);
