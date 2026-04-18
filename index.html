@@ -8,11 +8,11 @@
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <link href="assets/fontawesome/css/all.css" rel="stylesheet">
-    <link rel="shortcut icon" href="favicon.ico" />
-    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="mobile-style.css">
+    <link href="/assets/fontawesome/css/all.css" rel="stylesheet">
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/mobile-style.css">
 
     <title>Vanderlei Loureiro</title>
 
@@ -64,16 +64,31 @@
                         </a>
                     </div>
                 </div>
+                <div class="image-description">
+                    <img src="assets/profile.jpeg" alt="Foto do perfil">
+                </div>
             </div>
             
     
             <div class="publications-feed">
                 <h3>Publicações</h3>
+                {% for post in collections.post | reverse | slice(0, 5) %}
+                    <div class="publication-card" id="publication-card">
+                        <div class="publication-card-text"><a href="{{ post.url }}"><h4> {{ post.data.title }} </h4></a>
+                        <p> {{ post.data.description }} </p>
+                        </div>
+                    </div>
+                {% endfor %}
+
+                <div class="more-publications">
+                    <a href="/posts/">ver todas</a>
+                </div>
+                <!-- <h3>Medium</h3>
                 <div id="publications-feed-list"></div>
 
                 <div class="more-publications">
                     <a href="https://vanderloureiro.medium.com/" target="_blank">ver todas</a>
-                </div>
+                </div> -->
             </div>
         </div>
 
@@ -94,8 +109,8 @@
             </div>
         </div>
     </footer>
-    <script src="search.js"></script>
-    <script src="main.js"></script>
+    <script src="/search.js"></script>
+    <script src="/main.js"></script>
     </body>
 
 </html>

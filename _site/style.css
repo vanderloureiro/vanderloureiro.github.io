@@ -1,0 +1,137 @@
+@font-face {
+    font-family: 'Charter Regular';
+    src: url(./assets/charter/ttf/Charter\ Regular.ttf);
+  }
+  
+
+body {
+    color: #1D1E20;
+    font-family: 'Charter Regular', serif;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+
+ul, ol, li {
+    list-style: none;
+}
+
+a {
+    color: #1D1E20;
+    text-decoration: none;
+}
+a:hover {
+    color: #5b6069;
+    text-decoration: none;
+}
+
+h1 {
+    font-family: Roboto;
+    font-weight: 700;
+    font-size: 1.8rem;
+    margin: 0;
+}
+
+header {
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.content {
+    margin: 0 8rem;
+}
+
+.home-description {
+    margin: 7rem 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.text-description {
+    margin-right: 7%;
+    font-size: 1.5rem;
+}
+
+.text-description .social-media {
+    margin-top: 10%;
+    font-size: 1rem;
+}
+
+.image-description img {
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+}
+
+.more-publications {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 4rem;
+}
+
+.more-publications a:hover {
+    text-decoration: underline;
+}
+
+.publication-card {
+    margin-bottom: 2rem;
+    background-color: #F5F5F5;
+    border-radius: 15px;
+    display: flex;
+}
+
+.publication-card img {
+    object-fit: cover;
+    height: 100%;
+    width: 250px;
+    border-radius: 15px;
+}
+
+.publication-card-text {
+    padding: 1rem;
+    position: relative;
+}
+
+.publication-card-text h4 {
+    font-family: 'Roboto';
+    font-size: 20px;
+    font-weight: 700;
+    margin: 0;
+}
+
+.publication-card-text p {
+    opacity: 0.8;
+    margin-top: 0.8rem;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+}
+
+.publication-card-text .date {
+    margin: 0;
+}
+
+footer {
+    display: flex;
+    justify-content: space-between;
+    padding: 2% 10% 3% 10%;
+    background-color: #F5F5F5;
+    font-size: 1.2rem;
+}
+
+footer p {
+    margin: 0;
+}
+
+.social-media-footer {
+    padding-top: 1rem;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.social-media-footer i {
+    margin-left: 10px;
+}
