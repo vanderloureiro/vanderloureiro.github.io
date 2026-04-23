@@ -29,7 +29,9 @@
 <body>
     <div class="container">
         <header class="d-flex justify-content-between">
-            <h1>Vanderlei Loureiro</h1>
+            <a href="/">
+                <h1>Vanderlei Loureiro</h1>
+            </a>
             <div class="social-media">
                 <a href="https://vanderloureiro.medium.com/" target="_blank">
                     <i class="fa-lg fab fa-medium"></i>
@@ -71,7 +73,7 @@
             
     
             <div class="publications-feed">
-                <h3>Publicações</h3>
+                <h4 class="mb-3">Publicações</h4>
                 {% for post in collections.post | reverse | slice(0, 5) %}
                     <div class="publication-card" id="publication-card">
                         <div class="publication-card-text"><a href="{{ post.url }}"><h4> {{ post.data.title }} </h4></a>
