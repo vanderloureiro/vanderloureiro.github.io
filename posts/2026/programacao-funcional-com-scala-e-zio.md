@@ -1,6 +1,7 @@
 ---
 title: Programação funcional com Scala e ZIO
-description: Essa é uma apresentação da mudança do blog
+description: Apresentação inicial de programação funcional com a linguagem Scala e com a biblioteca ZIO, explicando conceitos iniciais de arrow-orientaded, mônads e efeitos
+published-at: 20-05-2026
 ---
 ## Programação funcional com Scala e ZIO
 <br>
