@@ -44,52 +44,51 @@
         <main class="my-5 content post-content">
             <h2>Programação funcional com Scala e ZIO</h2>
 <br>
-<p>A linguagem Scala tem a versatilidade de trazer elementos de orientação a objetos e programação funcional em sua sintaxe que roda em cima da JVM, nesse texto vamos focar na perspectiva funcional usando a biblioteca ZIO.</p>
-<p>ZIO é uma biblioteca de programação funcional com foco em concorrência que traz na sua abordagem um estilo de programação reativa, declarativa e imutável para construir aplicações resilientes, escaláveis e event-driven.</p>
+<p>A linguagem Scala tem a versatilidade de trazer elementos de orientação a objetos e programação funcional em sua sintaxe que roda na JVM. Nesse texto vamos focar na perspectiva funcional usando a biblioteca ZIO.</p>
+<p>ZIO é uma biblioteca de programação funcional com foco em concorrência que traz na sua abordagem um estilo de programação reativa, declarativa e imutável para construir aplicações resilientes, escaláveis e <em>event-driven</em>.</p>
 <h3>Tipo ZIO</h3>
-<p>Primeiro é necessário entender a ideia do tipo de dado ZIO, que é chamado de functional effect type (tipo de efeito funcional). O tipo ZIO[R, E, A] é o modelo de dado fundamental da biblioteca e os valores desse tipo são chamados de functional effects (efeitos funcionais).</p>
+<p>Primeiro é necessário entender a ideia do tipo de dado ZIO, que é chamado de <em>functional effect type</em> (tipo de efeito funcional). O tipo <strong>ZIO[R, E, A]</strong> é o modelo de dado fundamental da biblioteca e os valores desse tipo são chamados de <em>functional effects</em> (efeitos funcionais).</p>
 <p>Esse é um modelo puramente descritivo por natureza e deve ser executado para observar qualquer side-effect, como logging, interação com banco de dados, streams de dados, requests, etc.</p>
 <p><img src="/assets/images/posts/programacao-funcional-com-scala-e-zio/tipo-zio.png" alt="Descrição de tipo ZIO"></p>
-<p>R é o ambiente necessário para que o efeito seja executado. Isso pode incluir quaisquer dependências que o efeito tenha, por exemplo, acesso a um banco de dados; ou um efeito pode não requerer nenhum ambiente, caso em que o parâmetro de tipo será Any.</p>
-<p>E é o tipo de valor com o qual o efeito pode falhar. Pode ser Throwable ou Exception, mas também pode ser um tipo de erro específico do domínio; ou um efeito pode nem mesmo ser capaz de falhar, caso em que o parâmetro de tipo será Nothing.</p>
-<p>A é o tipo de valor com o qual o efeito pode ser executado com sucesso. Pode ser considerado como o valor de retorno ou a saída do efeito.</p>
+<p><strong>R</strong> é o ambiente necessário para que o efeito seja executado. Isso pode incluir quaisquer dependências que o efeito tenha, por exemplo, acesso a um banco de dados; ou um efeito pode não requerer nenhum ambiente, caso em que o tipo do parâmetro será <code>Any</code>.</p>
+<p><strong>E</strong> é o tipo de valor com o qual o efeito pode falhar. Pode ser <code>Throwable</code> ou <code>Exception</code>, mas também pode ser um tipo de erro específico do domínio; ou um efeito pode nem mesmo ser capaz de falhar, caso em que o tipo do parâmetro será <code>Nothing</code>.</p>
+<p><strong>A</strong> é o tipo de valor com o qual o efeito pode ser executado com sucesso. Pode ser considerado como o valor de retorno ou a saída do efeito.</p>
 <p>Abaixo temos um exemplo de um objeto ZIO e seus respectivos parâmetros:</p>
 <pre><code>val myLog: ZIO[Any, Nothing, Unit] = ZIO.succeed(println(&quot;Hello, Scala!&quot;))
 </code></pre>
-<p>A constante myLog declara um efeito gerado através do construtor ZIO.attempt() que roda em qualquer ambiente (R: Any), não lança nenhum erro (E: Nothing) e não retorna valor algum ao final (A: Unit) pois o ZIO apenas tenta imprimir uma mensagem no console.</p>
-<p>Para quem vem do Java, podemos usar para entendimento o tipo Optional[T]. O Optional é uma mônada (conceito da programação funcional) que encapsula o valor dentro do objeto e podemos fazer operações nessa mônada e evitar manipular diretamente o valor. Esse wrapper do valor permite evitar erros como NullPointerException, por exemplo.</p>
+<p>O atributo <code>myLog</code> declara um efeito gerado através do construtor <code>ZIO.attempt()</code> que roda em qualquer ambiente (R: Any), não lança nenhum erro (E: Nothing) e não retorna valor algum ao final (A: Unit) pois o ZIO apenas imprime uma mensagem no console.</p>
+<p>Para quem vem do Java, podemos usar como comparação o tipo <code>Optional&lt;T&gt;</code>. O <code>Optional</code>, assim como o tipo ZIO, é uma mônada. Uma mônada na programação funcional é uma estrutura que representa computações em um contexto e fornece mecanismos padronizados para compor essas computações. Essa estrutura pode evitar erros como <code>NullPointerExeception</code>, por exemplo.</p>
 <h3>Procedural vs descritivo</h3>
 <p>Um ponto crucial é entender que escrevemos efeitos de forma declarativa, algo diferente da programação procedural que estamos acostumados. Se temos um código como o descrito abaixo, ele será executado de forma sequencial assim que o programa é iniciado:</p>
 <pre><code>println(&quot;Hello, Scala&quot;)
 </code></pre>
-<p>Já no ZIO, nós apenas declaramos um efeito que não é executado. Executamos apenas em um segundo momento quando quisermos.</p>
+<p>Já com ZIO, nós apenas declaramos um efeito que não é executado. Executamos apenas em um segundo momento quando quisermos.</p>
 <pre><code>import zio._
 
 val printLog = ZIO.succeed(println(&quot;Hello&quot;))
 </code></pre>
-<p>Por mais que por esse exemplo acima não haja grande diferença, o principal objetivo aqui é separar o que queremos fazer de como queremos fazer. Temos um efeito printLog que define o que eu quero fazer, que no caso é logar uma mensagem. O efeito que eu quero que seja feito pode ser chamado a qualquer momento e podemos escolher como ele vai ser executado. Por exemplo:</p>
-<pre><code>val printLater = printLog.delay(5.second)
+<p>Por mais que por esse exemplo acima não haja grande diferença, o principal objetivo aqui é separar o que queremos fazer de como queremos fazer. Temos um efeito <code>printLog</code> que define o que eu quero fazer, que no caso é logar uma mensagem. O efeito que eu quero que seja feito pode ser chamado a qualquer momento e podemos escolher como ele vai ser executado. Por exemplo:</p>
+<pre><code>val printLater = printLog.delay(5.seconds)
 </code></pre>
-<p>Estamos definindo que a mensagem será exibida após um delay de 5 minutos da invocação.</p>
+<p>Estamos definindo que a mensagem será exibida com um delay de 5 segundos depois da invocação.</p>
 <h3>Como executar</h3>
-<p>A forma mais simples de executar o efeito é estender da trait ZIOAppDefault e implementar o método run:</p>
+<p>A forma mais simples de executar o efeito é estender da trait <code>ZIOAppDefault</code> e implementar o método <code>run</code>:</p>
 <pre><code>import zio._
 
 object Main extends ZIOAppDefault {
 
 	val printLog = ZIO.succeed(println(&quot;Hello, Scala!&quot;))
 
-    val printLater = printLog.delay(5.second)
+	val printLater = printLog.delay(5.second)
   
 	override def run = printLater
 }
 </code></pre>
 <h3>Composição sequencial</h3>
 <p>Como visto, os efeitos ZIO são modelos que descrevem fluxos concorrentes e podemos combiná-los e transformá-los para gerar outros efeitos.</p>
-<p>Um método do ZIO bastante interessante é o flatMap que representa uma composição sequencial de dois efeitos, que nos permite criar um segundo efeito após a execução do primeiro e seu resultado.</p>
+<p>Um método do ZIO bastante importante é o <code>flatMap</code>, que representa uma composição sequencial de dois efeitos e nos permite criar um segundo efeito após a execução e resultado do primeiro.</p>
 <p>A seguir um exemplo que lê os dados do input do usuário e depois exibe esse resultado digitado:</p>
 <pre><code>import scala.io.StdIn
-
 
 val readLine = ZIO.attempt(StdIn.readLine())
 
@@ -97,7 +96,7 @@ def printLine(line: String) = ZIO.attempt(println(line))
 
 val echo = readLine.flatMap(line =&gt; printLine(line))
 </code></pre>
-<p>Perceba que inicialmente apenas definimos cada ação (readLine e printLine) e por fim combinamos esses dois efeitos com flatMap. O que estamos dizendo é: Execute o readLine, com o resultado desse efeito, execute o segundo efeito printLine passando como parâmetro o que foi lido no efeito anterior.</p>
+<p>Perceba que inicialmente apenas definimos cada ação (readLine e printLine) e por fim combinamos esses dois efeitos com <code>flatMap</code>. O que estamos dizendo é: Execute o readLine, com o resultado desse efeito, execute o segundo efeito printLine passando como parâmetro o que foi lido no efeito anterior.</p>
 <p>Essa é uma abstração semelhante ao modelo procedural onde uma ação ocorre após a outra e permite encadear vários efeitos sequenciais.</p>
 <p>Vamos imaginar um programa procedural com esse código:</p>
 <pre><code>val data = doQuery(query)
@@ -111,8 +110,8 @@ writeResponse(response)
 	)
 )
 </code></pre>
-<h3>For Comprehensions</h3>
-<p>Quando passamos de duas ou três operações flatMap o código começa a ficar mais confuso devido ao aninhamento. Nesses casos temos o recurso For Comprehensions do Scala que permite definir composições sequenciais de um jeito mais legível.</p>
+<h3>For-Comprehensions</h3>
+<p>Quando passamos de duas ou três operações <code>flatMap</code> o código começa a ficar mais confuso devido ao aninhamento. Nesses casos temos o recurso <strong>For-Comprehensions</strong> do Scala que permite definir composições sequenciais de um jeito mais legível.</p>
 <p>Voltando ao exemplo do printLine, podemos reescrevê-lo assim:</p>
 <pre><code>import zio._
 
@@ -120,22 +119,22 @@ val echo =
 	for {
 		line &lt;- readLine
 		_    &lt;- printLine(line)
-} yield ()
+	} yield ()
 </code></pre>
 <p>A leitura fica mais fácil pois fica semelhante ao modelo procedural.</p>
-<p>A estrutura é iniciada pela palavra-chave for, seguida por um bloco de código e encerrada pela palavra-chave yield, que é seguida por um único parâmetro, representando o valor de sucesso do efeito.</p>
-<p>Cada linha do For Comprehension é escrita usando o formato result &lt;- effect, onde effect retorna um efeito e result é uma variável que armazenará o valor de sucesso do efeito. Se o resultado do efeito não for necessário, então o underline pode ser usado como nome da variável.</p>
+<p>A estrutura é iniciada pela palavra-chave <code>for</code>, seguida por um bloco de código e encerrada pela palavra-chave <code>yield</code>, que é seguida por um único parâmetro, representando o valor de sucesso do efeito.</p>
+<p>Cada linha do For Comprehension é escrita usando o formato <code>result &lt;- effect</code>, onde <code>effect</code> retorna um efeito e <code>result</code> é uma variável que armazenará o valor de sucesso do efeito. Se o resultado do efeito não for necessário, então o underline pode ser usado como nome da variável.</p>
 <h3>Aliases</h3>
-<p>Apesar do tipo mais completo do ZIO que vimos, que é o tipo ZIO[R, E, A]. Temos outros tipos como pseudônimos, pois podemos saber que uma aplicação não requer um ambiente externo, ou que só pode falhar com um determinado tipo de erro, ou que não pode falhar de forma alguma.</p>
+<p>Apesar do tipo mais completo do ZIO que vimos, que é o tipo <strong>ZIO[R, E, A]</strong>. Temos outros tipos como pseudônimos, pois podemos saber que uma aplicação não requer um ambiente externo, ou que só pode falhar com um determinado tipo de erro, ou que não pode falhar de forma alguma.</p>
 <p>Os principais aliases e seus significados são:</p>
-<p>IO[E, A] - Um efeito que não requer nenhum ambiente, pode falhar com um E ou pode ser bem-sucedido com um A.
-Task[A] - Um efeito que não requer nenhum ambiente, pode falhar com um Throwable, ou pode ser bem-sucedido com um A.
-RIO[R, A] - Um efeito que requer um ambiente do tipo R, pode falhar com um Throwable, ou pode ser bem-sucedido com um A.
-UIO[A] - Um efeito que não requer nenhum ambiente, não pode falhar e é bem-sucedido com um A.
-URIO[R, A] - Um efeito que requer um ambiente do tipo R, não pode falhar e pode ser bem-sucedido com um A.</p>
+<p><strong>IO[E, A]</strong> - Um efeito que não requer nenhum ambiente, pode falhar com um <strong>E</strong> ou pode ser bem-sucedido com um <strong>A</strong>.</p>
+<p><strong>Task[A]</strong> - Um efeito que não requer nenhum ambiente, pode falhar com um <strong>Throwable</strong>, ou pode ser bem-sucedido com um <strong>A</strong>.</p>
+<p><strong>RIO[R, A]</strong> - Um efeito que requer um ambiente do tipo <strong>R</strong>, pode falhar com um <strong>Throwable</strong>, ou pode ser bem-sucedido com um <strong>A</strong>.</p>
+<p><strong>UIO[A]</strong> - Um efeito que não requer nenhum ambiente, não pode falhar e é bem-sucedido com um <strong>A</strong>.</p>
+<p><strong>URIO[R, A]</strong> - Um efeito que requer um ambiente do tipo <strong>R</strong>, não pode falhar e pode ser bem-sucedido com um <strong>A</strong>.</p>
 <p>Vários outros tipos de dados no ZIO e em outras bibliotecas do ecossistema ZIO usam aliases de tipo semelhantes; portanto, se você estiver familiarizado com eles, também será capaz de compreendê-los rapidamente.</p>
 <h3>Conclusão</h3>
-<p>Essa é uma visão introdutória sobre efeitos e programação funcional com ZIO e espero que tenha sido uma apresentação clara, diferente de quando vi a sintaxe pela primeira vez e demorei para entender os conceitos e como as coisas funcionavam. Provavelmente eu venha a postar mais assuntos relacionados, mas até lá, deixo o livro de principal fonte de informação nas referências.</p>
+<p>Essa é uma apresentação introdutória sobre efeitos e programação funcional com ZIO e espero que tenha sido uma apresentação clara, diferente de quando vi a sintaxe pela primeira vez e demorei para entender os conceitos e como as coisas funcionavam. Provavelmente eu venha a postar mais assuntos relacionados, mas até lá, deixo o livro de principal fonte de informação nas referências.</p>
 <h3>Referências</h3>
 <p>Zionomicon - John A. De Goes, Adam Flaser, Milad Khajavi - https://zionomicon.com/</p>
 
