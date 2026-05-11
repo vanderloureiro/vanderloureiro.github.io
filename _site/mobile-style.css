@@ -46,6 +46,10 @@
 }
 
 @media(max-width: 600px) {
+    header, .content {
+        padding: 0 1rem;
+    }
+
     header {
         display: block;
         padding-top: 1rem;
@@ -64,10 +68,6 @@
         height: 40%;
         width: 100%;
         border-radius: 15px;
-    }
-
-    .social-media {
-        margin-top: 1rem;
     }
 
     footer {
