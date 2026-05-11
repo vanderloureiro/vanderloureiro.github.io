@@ -1,0 +1,12 @@
+---
+permalink: /posts/
+layout: post-layout.html
+---
+<h4 class="mb-3">Publicações</h4>
+{% for post in collections.post | reverse %}
+    <div class="publication-card" id="publication-card">
+        <div class="publication-card-text"><a href="{{ post.url }}"><h4> {{ post.data.title }} </h4></a>
+            <p> {{ post.data.description }} </p>
+        </div>
+    </div>
+{% endfor %}
