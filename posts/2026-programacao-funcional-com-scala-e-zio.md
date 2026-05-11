@@ -8,7 +8,7 @@ published-at: 11-05-2026
 
 A linguagem Scala tem a versatilidade de trazer elementos de orientação a objetos e programação funcional em sua sintaxe que roda na JVM. Nesse texto vamos focar na perspectiva funcional usando a biblioteca ZIO.
 
-ZIO é uma biblioteca de programação funcional com foco em concorrência que traz na sua abordagem um estilo de programação reativa, declarativa e imutável para construir aplicações resilientes, escaláveis e *event-driven*.
+ZIO é uma biblioteca de programação funcional com foco em concorrência que traz na sua abordagem um estilo de programação declarativa e imutável para construir aplicações resilientes, escaláveis e *event-driven*.
 
 ### Tipo ZIO
 
