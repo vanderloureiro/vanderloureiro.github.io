@@ -30,7 +30,7 @@ Abaixo temos um exemplo de um objeto ZIO e seus respectivos parâmetros:
 val myLog: ZIO[Any, Nothing, Unit] = ZIO.succeed(println("Hello, Scala!"))
 ```
 
-O atributo `myLog` declara um efeito gerado através do construtor `ZIO.attempt()` que roda em qualquer ambiente (R: Any), não lança nenhum erro (E: Nothing) e não retorna valor algum ao final (A: Unit) pois o ZIO apenas imprime uma mensagem no console.
+O atributo `myLog` declara um efeito gerado através do construtor `ZIO.succeed()` que roda em qualquer ambiente (R: Any), não lança nenhum erro (E: Nothing) e não retorna valor algum ao final (A: Unit) pois o ZIO apenas imprime uma mensagem no console.
 
 Para quem vem do Java, podemos usar como comparação o tipo `Optional<T>`. O `Optional`, assim como o tipo ZIO, é uma mônada. Uma mônada na programação funcional é uma estrutura que representa computações em um contexto e fornece mecanismos padronizados para compor essas computações. Essa estrutura pode evitar erros como `NullPointerExeception`, por exemplo.
 
