@@ -14,7 +14,7 @@ ZIO é uma biblioteca de programação funcional com foco em concorrência que t
 
 Primeiro é necessário entender a ideia do tipo de dado ZIO, que é chamado de *functional effect type* (tipo de efeito funcional). O tipo **ZIO[R, E, A]** é o modelo de dado fundamental da biblioteca e os valores desse tipo são chamados de *functional effects* (efeitos funcionais).
 
-Esse é um modelo puramente descritivo por natureza e deve ser executado para observar qualquer side-effect, como logging, interação com banco de dados, streams de dados, requests, etc.
+Esse é um modelo puramente descritivo e precisa ser executado para observar qualquer side-effect, como logging, interação com banco de dados, streams de dados, requests, etc.
 
 ![Descrição de tipo ZIO](/assets/images/posts/programacao-funcional-com-scala-e-zio/tipo-zio.png)
 
