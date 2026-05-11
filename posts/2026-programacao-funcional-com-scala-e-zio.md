@@ -1,6 +1,6 @@
 ---
 title: Programação funcional com Scala e ZIO
-description: Apresentação de programação funcional com a linguagem Scala e com a biblioteca ZIO, trazendo conceitos iniciais de efeitos funcionais, mônads e encadeamento de efeitos com flatMap
+description: Apresentação de programação funcional com a linguagem Scala e com a biblioteca ZIO, trazendo conceitos iniciais de efeitos funcionais, mônadas e encadeamento de efeitos com flatMap
 published-at: 11-05-2026
 ---
 ## Programação funcional com Scala e ZIO
