@@ -50,7 +50,7 @@ import zio._
 val printLog = ZIO.succeed(println("Hello"))
 ```
 
-Por mais que por esse exemplo acima não haja grande diferença, o principal objetivo aqui é separar **o que** queremos fazer de **como** queremos fazer. Temos um efeito `printLog` que define o que eu quero fazer, que no caso é logar uma mensagem. O efeito que eu quero que seja feito pode ser chamado a qualquer momento e podemos escolher como ele vai ser executado. Exemplo:
+Por mais que no exemplo acima não haja grande diferença, o principal objetivo aqui é separar **o que** queremos fazer de **como** queremos fazer. Temos um efeito `printLog` que define o que eu quero fazer, que no caso é logar uma mensagem. O efeito que eu quero que seja feito pode ser chamado a qualquer momento e podemos escolher como ele vai ser executado. Exemplo:
 
 ```
 val printLater = printLog.delay(5.seconds)
