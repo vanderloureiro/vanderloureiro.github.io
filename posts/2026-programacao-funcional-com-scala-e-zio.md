@@ -24,7 +24,7 @@ Esse é um modelo puramente descritivo e precisa ser executado para observar qua
 
 **A** é o tipo de valor com o qual o efeito pode ser executado com sucesso. Pode ser considerado como o valor de retorno ou a saída do efeito.
 
-Abaixo temos um exemplo de um objeto ZIO e seus respectivos parâmetros:
+Abaixo temos um trecho de um objeto ZIO e seus respectivos parâmetros:
 
 ```
 val myLog: ZIO[Any, Nothing, Unit] = ZIO.succeed(println("Hello, Scala!"))
@@ -32,7 +32,7 @@ val myLog: ZIO[Any, Nothing, Unit] = ZIO.succeed(println("Hello, Scala!"))
 
 O atributo `myLog` declara um efeito gerado através do construtor `ZIO.succeed()` que roda em qualquer ambiente (R: Any), não lança nenhum erro (E: Nothing) e não retorna valor algum ao final (A: Unit) pois o ZIO apenas imprime uma mensagem no console.
 
-Para quem vem do Java, podemos usar como comparação o tipo `Optional<T>`. O `Optional`, assim como o tipo ZIO, é uma mônada. Uma mônada na programação funcional é uma estrutura que representa computações em um contexto e fornece mecanismos padronizados para compor essas computações. Essa estrutura pode evitar erros como `NullPointerExeception`, por exemplo.
+Para quem vem do Java, podemos usar de comparação o tipo `Optional<T>`. O `Optional`, assim como o tipo ZIO, é uma mônada. Uma mônada na programação funcional é uma estrutura que representa computações em um contexto e fornece mecanismos padronizados para compor essas computações. Para uma explicação superficial e menos purista, em muitos cenários a mônada pode ser como um *wrapper* (invólucro, caixa, embalagem) que encapsula um valor ou comportamento dentro dela e faz operações em cima dele. Essa estrutura pode evitar erros como `NullPointerExeception`, por exemplo.
 
 ### Procedural vs descritivo
 
@@ -50,7 +50,7 @@ import zio._
 val printLog = ZIO.succeed(println("Hello"))
 ```
 
-Por mais que por esse exemplo acima não haja grande diferença, o principal objetivo aqui é separar o que queremos fazer de como queremos fazer. Temos um efeito `printLog` que define o que eu quero fazer, que no caso é logar uma mensagem. O efeito que eu quero que seja feito pode ser chamado a qualquer momento e podemos escolher como ele vai ser executado. Por exemplo:
+Por mais que por esse exemplo acima não haja grande diferença, o principal objetivo aqui é separar **o que** queremos fazer de **como** queremos fazer. Temos um efeito `printLog` que define o que eu quero fazer, que no caso é logar uma mensagem. O efeito que eu quero que seja feito pode ser chamado a qualquer momento e podemos escolher como ele vai ser executado. Exemplo:
 
 ```
 val printLater = printLog.delay(5.seconds)
@@ -76,11 +76,11 @@ object Main extends ZIOAppDefault {
 
 ### Composição sequencial
 
-Como visto, os efeitos ZIO são modelos que descrevem fluxos concorrentes e podemos combiná-los e transformá-los para gerar outros efeitos. 
+Visto antes, os efeitos ZIO são modelos que descrevem fluxos concorrentes e podemos combiná-los e transformá-los para gerar outros efeitos. 
 
 Um método do ZIO bastante importante é o `flatMap`, que representa uma composição sequencial de dois efeitos e nos permite criar um segundo efeito após a execução e resultado do primeiro.
 
-A seguir um exemplo que lê os dados do input do usuário e depois exibe esse resultado digitado:
+A seguir um código que lê os dados do input do usuário e depois exibe esse resultado digitado:
 
 ```
 import scala.io.StdIn
