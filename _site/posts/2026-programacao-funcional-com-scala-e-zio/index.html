@@ -15,8 +15,10 @@
     <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="/style.css">
     <link rel="stylesheet" href="/mobile-style.css">
+    <meta property="og:title" content="Programação funcional com Scala e ZIO">
+    <meta property="og:description" content="Apresentação de programação funcional com a linguagem Scala e com a biblioteca ZIO, trazendo conceitos iniciais de efeitos funcionais, mônadas e encadeamento de efeitos com flatMap">
 
-    <title>Programação funcional com Scala e ZIO</title>
+    <title>Programação funcional com Scala e ZIO | Vanderlei Loureiro</title>
 </head>
 
 <body class="d-flex flex-column min-vh-100">
@@ -25,7 +27,7 @@
 
         <header class="d-flex justify-content-between align-items-center">
             <a href="/">
-                <h1>Vanderlei Loureiro</h1>
+                <span class="header-title">Vanderlei Loureiro</span>
             </a>
 
             <div class="social-media">
@@ -67,7 +69,7 @@
 
 val printLog = ZIO.succeed(println(&quot;Hello&quot;))
 </code></pre>
-<p>Por mais que por esse exemplo acima não haja grande diferença, o principal objetivo aqui é separar <strong>o que</strong> queremos fazer de <strong>como</strong> queremos fazer. Temos um efeito <code>printLog</code> que define o que eu quero fazer, que no caso é logar uma mensagem. O efeito que eu quero que seja feito pode ser chamado a qualquer momento e podemos escolher como ele vai ser executado. Exemplo:</p>
+<p>Por mais que no exemplo acima não haja grande diferença, o principal objetivo aqui é separar <strong>o que</strong> queremos fazer de <strong>como</strong> queremos fazer. Temos um efeito <code>printLog</code> que define o que eu quero fazer, que no caso é logar uma mensagem. O efeito que eu quero que seja feito pode ser chamado a qualquer momento e podemos escolher como ele vai ser executado. Exemplo:</p>
 <pre><code>val printLater = printLog.delay(5.seconds)
 </code></pre>
 <p>Estamos definindo que a mensagem será exibida com um delay de 5 segundos depois da invocação.</p>
